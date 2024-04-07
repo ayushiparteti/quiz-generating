@@ -64,6 +64,69 @@ button {
 .correct-answer {
     color: green;
 }
+const questions = [
+    {
+        question: "What is 2 + 2?",
+        options: ["1", "2", "3", "4"],
+        answer: 3
+    },
+    {
+        question: "What is the capital of France?",
+        options: ["London", "Berlin", "Paris", "Madrid"],
+        answer: 2
+    }
+    // Add more questions here
+];
+
+const quizContainer = document.getElementById('quiz-container');
+const generateBtn = document.getElementById('generate-btn');
+const submitBtn = document.getElementById('submit-btn');
+const resultContainer = document.getElementById('result-container');
+
+generateBtn.addEventListener('click', generateQuiz);
+submitBtn.addEventListener('click', showResults);
+
+function generateQuiz() {
+    quizContainer.innerHTML = '';
+    questions.forEach((question, index) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.classList.add('quiz-question');
+        questionDiv.textContent = `Question ${index + 1}: ${question.question}`;
+        
+        const optionsList = document.createElement('ul');
+        optionsList.classList.add('quiz-options');
+        question.options.forEach((option, optionIndex) => {
+            const optionItem = document.createElement('li');
+            const optionLabel = document.createElement('label');
+            const optionInput = document.createElement('input');
+            optionInput.type = 'radio';
+            optionInput.name = `question${index}`;
+            optionInput.value = optionIndex;
+            optionLabel.textContent = option;
+            optionLabel.appendChild(optionInput);
+            optionItem.appendChild(optionLabel);
+            optionsList.appendChild(optionItem);
+        });
+
+        questionDiv.appendChild(optionsList);
+        quizContainer.appendChild(questionDiv);
+    });
+}
+
+function showResults() {
+    let score = 0;
+    const selectedOptions = document.querySelectorAll('input[type="radio"]:checked');
+    selectedOptions.forEach(option => {
+        const questionIndex = parseInt(option.name.replace('question', ''));
+        const selectedAnswer = parseInt(option.value);
+        if (questions[questionIndex].answer === selectedAnswer) {
+            score++;
+        }
+    });
+
+    resultContainer.textContent = `You scored ${score} out of ${questions.length}`;
+}
+
 
 .wrong-answer {
     color: red;
