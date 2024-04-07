@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Generator</h1>
+        <div id="quiz-container">
+            <!-- Quiz questions will be generated here -->
+        </div>
+        <button id="generate-btn">Generate Quiz</button>
+        <button id="submit-btn">Submit Answers</button>
+        <div id="result-container"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.quiz-question {
+    margin-bottom: 10px;
+}
+
+.quiz-options {
+    list-style-type: none;
+    padding: 0;
+}
+
+.quiz-options li {
+    margin-bottom: 5px;
+}
+
+.quiz-options label {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.correct-answer {
+    color: green;
+}
+
+.wrong-answer {
+    color: red;
+}
+
